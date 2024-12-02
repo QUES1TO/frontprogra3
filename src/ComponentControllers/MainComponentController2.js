@@ -4,7 +4,7 @@ import api from "../Http/api";
 const MainComponentController2 = () => {
     const [data, setData] = useState([]);
     useEffect( ()=>{
-        api.productData()
+        api.productoData(1)
             .then(response =>{
                 return response.json()
             }).then(json=>{
