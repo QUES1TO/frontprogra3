@@ -35,7 +35,7 @@ const MainComponent = ({data,handleEdit}) => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.product_name}</TableCell>
+              <TableCell align="right">{row.nombre}</TableCell>
               <TableCell align="right">{row.id}</TableCell>
               <TableCell align="right">{row.product_price}</TableCell>           
               <TableCell align="right">

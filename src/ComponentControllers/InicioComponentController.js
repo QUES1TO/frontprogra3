@@ -20,6 +20,7 @@ const InicioComponentController = () => {
                 console.log(response);
             });
       },[]);    
+      
 
     return (
         <>

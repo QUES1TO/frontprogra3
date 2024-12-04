@@ -9,6 +9,8 @@ import SideBarComponentController from "./ComponentControllers/SideBarComponentC
 import EditProductComponentController from "./ComponentControllers/EditProductComponentController";
 import InicioComponentController from "./ComponentControllers/InicioComponentController";
 import GuardarProductoComponentController from "./ComponentControllers/GuardarProductoComponentController";
+import ViewProductComponentController from "./ComponentControllers/ViewProductComponentController";
+
 
 import auth from "./Auth/auth";
 const App = () => {
@@ -48,6 +50,7 @@ const App = () => {
         <Route path='/inicio' Component={InicioComponentController}/>
         <Route path='/home2' Component={MainComponentController2}/>
         <Route path='/guardar' Component={GuardarProductoComponentController}/>
+        <Route path='/producto/:id' Component={ViewProductComponentController}/>
           <Route path='/login' Component={loginTarget}/>   
           <Route element={<PrivateRoutes/>}>
             <Route path='/home' Component={MainComponentController}/>   

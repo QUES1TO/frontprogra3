@@ -9,7 +9,7 @@ const MainComponentController = () => {
     const navigate = useNavigate();
     const [data, setData] = useState([]);
     useEffect( ()=>{
-        api.productData()
+        api.productoData2()
             .then(response =>{
                 return response.json()
             }).then(json=>{

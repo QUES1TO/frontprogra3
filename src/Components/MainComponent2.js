@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Typography, Button, Container, Grid, Card, CardMedia, CardContent, TextField, MenuItem, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const MainComponent2 = ({ data }) => {
+const MainComponent2 = ({ data,handleViewMore }) => {
   const navigate = useNavigate();
   const [filters, setFilters] = useState({
     marca: '',
@@ -20,9 +20,7 @@ const MainComponent2 = ({ data }) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
-  const handleViewMore = (product) => {
-    navigate(`/producto/${product.id}`, { state: { product } });
-  };
+  
 
   const filteredData = data.filter((product) =>
     Object.keys(filters).every((key) =>
@@ -35,17 +33,28 @@ const MainComponent2 = ({ data }) => {
       {/* Navbar */}
       <AppBar position="sticky" sx={{ backgroundColor: '#0d1b2a' }}>
         <Toolbar>
+          
           <IconButton edge="start" color="inherit">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" sx={{ flexGrow: 1, color: '#f0f0f0' }}>
             Compra y Venta de Autos
-          </Typography>
-          <Button component={Link} to="/" sx={{ color: '#f0f0f0' }}>Inicio</Button>
-          <Button component={Link} to="/autos" sx={{ color: '#f0f0f0' }}>Ver Autos</Button>
-          <Button component={Link} to="/vender" sx={{ color: '#f0f0f0' }}>Vender mi Auto</Button>
-          <Button component={Link} to="/nosotros" sx={{ color: '#f0f0f0' }}>Nosotros</Button>
-          <Button component={Link} to="/contacto" sx={{ color: '#f0f0f0' }}>Contacto</Button>
+          </Typography >
+          <Button component={Link} to="/inicio" sx={{ color: '#f0f0f0' }} className="mx-2">
+            Inicio
+          </Button>
+          <Button component={Link} to="/home2" sx={{ color: '#f0f0f0' }} className="mx-2">
+            Ver Autos
+          </Button>
+          <Button component={Link} to="/home" sx={{ color: '#f0f0f0' }} className="mx-2">
+            Vender mi Auto
+          </Button>
+          <Button component={Link} to="/nosotros" sx={{ color: '#f0f0f0' }} className="mx-2">
+            Nosotros
+          </Button>
+          <Button component={Link} to="/contacto" sx={{ color: '#f0f0f0' }} className="mx-2">
+            Contacto
+          </Button>
         </Toolbar>
       </AppBar>
 

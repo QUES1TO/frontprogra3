@@ -4,25 +4,27 @@ import { Box, Typography, Button, Container, AppBar, Toolbar, IconButton, Grid, 
 import MenuIcon from '@mui/icons-material/Menu';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 const InicioComponent = () => {
   return (
     <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', color: '#f0f0f0' }}>
       {/* Navbar */}
       <AppBar position="sticky" sx={{ backgroundColor: '#0d1b2a' }}>
         <Toolbar>
+          
           <IconButton edge="start" color="inherit">
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" sx={{ flexGrow: 1, color: '#f0f0f0' }}>
             Compra y Venta de Autos
-          </Typography>
-          <Button component={Link} to="/" sx={{ color: '#f0f0f0' }} className="mx-2">
+          </Typography >
+          <Button component={Link} to="/inicio" sx={{ color: '#f0f0f0' }} className="mx-2">
             Inicio
           </Button>
-          <Button component={Link} to="/autos" sx={{ color: '#f0f0f0' }} className="mx-2">
+          <Button component={Link} to="/home2" sx={{ color: '#f0f0f0' }} className="mx-2">
             Ver Autos
           </Button>
-          <Button component={Link} to="/vender" sx={{ color: '#f0f0f0' }} className="mx-2">
+          <Button component={Link} to="/home" sx={{ color: '#f0f0f0' }} className="mx-2">
             Vender mi Auto
           </Button>
           <Button component={Link} to="/nosotros" sx={{ color: '#f0f0f0' }} className="mx-2">
