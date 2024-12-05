@@ -2,36 +2,57 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MainComponent from "../Components/MainComponent";
 import api from "../Http/api";
-const createData = (id,nombre,email) => {
-    return {id,nombre,email};
-}
+import auth from "../Auth/auth";
+
 const MainComponentController = () => {
+    const authenticationData = auth(); // Obtén los datos del usuario desde la autenticación
+    const [userData, setUserData] = useState(authenticationData); // Establece el estado del usuario
     const navigate = useNavigate();
     const [data, setData] = useState([]);
-    useEffect( ()=>{
+
+    useEffect(() => {
+        // Obtener los productos
         api.productoData2()
-            .then(response =>{
-                return response.json()
-            }).then(json=>{
-                const row = [];
-                json.body.forEach(element => {
-                    row.push(element);
-                });
-                setData(row);
-            }).catch(response=>{
-                console.log(response);
+            .then((response) => response.json())
+            .then((json) => {
+                setData(json.body); // Establece los productos
+            })
+            .catch((error) => {
+                console.log(error);
             });
-      },[]);    
+    }, []); // Solo se ejecuta una vez al cargar el componente
+
+    useEffect(() => {
+        console.log("Cargando datos del usuario...");
+        api.userData()
+            .then((response) => response.json())
+            .then((json) => {
+                console.log("Respuesta de la API:", json); // Verifica la estructura de los datos
+                if (json.body && json.body.length > 0) {
+                    setUserData(json.body[0]); // Asume que json.body contiene un único usuario
+                }
+            })
+            .catch((error) => {
+                console.log("Error al obtener los datos del usuario:", error);
+            });
+    }, []);
+    
+
     const handleEdit = (row) => {
-        console.log("Estamos aqui");
-        navigate("/edit/"+row.id, { state: row});
-    }
+        console.log("Estamos aquí");
+        navigate("/edit/" + row.id, { state: row }); // Redirige a la página de edición
+    };
+
     return (
         <>
-        <MainComponent
-        data={data}
-        handleEdit={handleEdit}/>
+            {/* Solo renderiza MainComponent cuando los datos estén listos */}
+            {userData && data.length > 0 ? (
+                <MainComponent data={data} handleEdit={handleEdit} userData={userData} />
+            ) : (
+                <div>Cargando...</div> // Muestra un mensaje de carga mientras se obtienen los datos
+            )}
         </>
     );
-}
-export default MainComponentController;
+};
+
+export default MainComponentController; 

@@ -14,6 +14,7 @@ const auth = () => {
     }
     else{
         return null;
+        
     }
 }
 export default auth;
