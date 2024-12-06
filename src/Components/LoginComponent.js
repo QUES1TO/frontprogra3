@@ -8,6 +8,8 @@ import FormControl from '@mui/material/FormControl';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Box } from '@mui/material';
+
 
 const LoginComponent = ({
   handleEmailChange,
@@ -27,29 +29,41 @@ const LoginComponent = ({
   return (
     <>
       {/* Navbar */}
-      <AppBar position="sticky" sx={{ backgroundColor: '#0d1b2a' }}>
+      <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', width: '100%', color: '#f0f0f0' }}>
+    
+      <AppBar
+        position="sticky"
+        sx={{
+          backgroundColor: 'transparent',
+          boxShadow: 'none',
+        }}
+      >
         <Toolbar>
-          <IconButton edge="start" color="inherit">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" sx={{ flexGrow: 1, color: '#f0f0f0' }}>
-            Compra y Venta de Autos
-          </Typography>
-          <Button component={Link} to="/inicio" sx={{ color: '#f0f0f0' }} className="mx-2">
-            Inicio
-          </Button>
-          <Button component={Link} to="/home2" sx={{ color: '#f0f0f0' }} className="mx-2">
-            Ver Autos
-          </Button>
-          <Button component={Link} to="/home" sx={{ color: '#f0f0f0' }} className="mx-2">
-            Vender mi Auto
-          </Button>
-          <Button component={Link} to="/nosotros" sx={{ color: '#f0f0f0' }} className="mx-2">
-            Nosotros
-          </Button>
-          <Button component={Link} to="/contacto" sx={{ color: '#f0f0f0' }} className="mx-2">
-            Contacto
-          </Button>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 2, // Espaciado entre botones
+            }}
+          >
+            <Button component={Link} to="/inicio" sx={{ color: '#00aaff' }}>
+              Inicio
+            </Button>
+            <Button component={Link} to="/home2" sx={{ color: '#00aaff' }}>
+              Ver Autos
+            </Button>
+            <Button component={Link} to="/home" sx={{ color: '#00aaff' }}>
+              Vender mi Auto
+            </Button>
+            <Button component={Link} to="/nosotros" sx={{ color: '#00aaff' }}>
+              Nosotros
+            </Button>
+            <Button component={Link} to="/contacto" sx={{ color: '#00aaff' }}>
+              Contacto
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
 
@@ -88,7 +102,9 @@ const LoginComponent = ({
           </CardContent>
         </Card>
       </div>
+      </div>
     </>
+    
   );
 };
 

@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Typography, Button, Container, Grid, Card, CardMedia, CardContent, TextField, MenuItem, Box } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Container,
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  TextField,
+  Box,
+} from '@mui/material';
 
-const MainComponent2 = ({ data,handleViewMore }) => {
+const MainComponent2 = ({ data, handleViewMore }) => {
   const navigate = useNavigate();
   const [filters, setFilters] = useState({
     marca: '',
@@ -20,8 +31,6 @@ const MainComponent2 = ({ data,handleViewMore }) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
-  
-
   const filteredData = data.filter((product) =>
     Object.keys(filters).every((key) =>
       filters[key] ? product[key]?.toString().toLowerCase().includes(filters[key].toLowerCase()) : true
@@ -29,55 +38,101 @@ const MainComponent2 = ({ data,handleViewMore }) => {
   );
 
   return (
-    <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', color: '#f0f0f0' }}>
+    <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', width: '100%', color: '#f0f0f0' }}>
       {/* Navbar */}
-      <AppBar position="sticky" sx={{ backgroundColor: '#0d1b2a' }}>
+      <AppBar position="sticky" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
         <Toolbar>
-          
-          <IconButton edge="start" color="inherit">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" sx={{ flexGrow: 1, color: '#f0f0f0' }}>
-            Compra y Venta de Autos
-          </Typography >
-          <Button component={Link} to="/inicio" sx={{ color: '#f0f0f0' }} className="mx-2">
-            Inicio
-          </Button>
-          <Button component={Link} to="/home2" sx={{ color: '#f0f0f0' }} className="mx-2">
-            Ver Autos
-          </Button>
-          <Button component={Link} to="/home" sx={{ color: '#f0f0f0' }} className="mx-2">
-            Vender mi Auto
-          </Button>
-          <Button component={Link} to="/nosotros" sx={{ color: '#f0f0f0' }} className="mx-2">
-            Nosotros
-          </Button>
-          <Button component={Link} to="/contacto" sx={{ color: '#f0f0f0' }} className="mx-2">
-            Contacto
-          </Button>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 2, // Espaciado entre botones
+            }}
+          >
+            <Button component={Link} to="/inicio" sx={{ color: '#00aaff' }}>
+              Inicio
+            </Button>
+            <Button component={Link} to="/home2" sx={{ color: '#00aaff' }}>
+              Ver Autos
+            </Button>
+            <Button component={Link} to="/home" sx={{ color: '#00aaff' }}>
+              Vender mi Auto
+            </Button>
+            <Button component={Link} to="/nosotros" sx={{ color: '#00aaff' }}>
+              Nosotros
+            </Button>
+            <Button component={Link} to="/contacto" sx={{ color: '#00aaff' }}>
+              Contacto
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
 
-      {/* Buscador */}
-      <Container maxWidth="xl" sx={{ my: 3 }}>
-        <Grid container spacing={2}>
-          {['marca', 'modelo', 'tipo', 'año', 'kilometraje', 'transmision', 'combustible', 'puertas'].map((field) => (
-            <Grid item xs={12} sm={6} md={3} key={field}>
-              <TextField
-                label={field.charAt(0).toUpperCase() + field.slice(1)}
-                name={field}
-                value={filters[field]}
-                onChange={handleInputChange}
-                fullWidth
-                variant="outlined"
-                sx={{ backgroundColor: '#fff', borderRadius: 1 }}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+      {/* Contenedor general */}
+      <Container
+        maxWidth="lg"
+        sx={{
+          backgroundColor: '#121212',
+          borderRadius: 2,
+          padding: 3,
+          marginTop: 3,
+          marginBottom: 5,
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.4)',
+        }}
+      >
+        {/* Buscador */}
+        {/* Buscador */}
+<Grid
+  container
+  spacing={2}
+  sx={{
+    marginBottom: 4,
+    backgroundColor: 'rgba(255, 255, 255, 0.05)', // Fondo translúcido
+    borderRadius: 2,
+    padding: 2,
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.4)', // Sombra suave
+  }}
+>
+  {['marca', 'modelo', 'tipo', 'año', 'kilometraje', 'transmision', 'combustible', 'puertas'].map((field) => (
+    <Grid item xs={12} sm={6} md={3} key={field}>
+      <TextField
+        label={field.charAt(0).toUpperCase() + field.slice(1)}
+        name={field}
+        value={filters[field]}
+        onChange={handleInputChange}
+        fullWidth
+        variant="outlined"
+        sx={{
+          backgroundColor: 'rgba(255, 255, 255, 0.15)', // Fondo translúcido en el campo
+          borderRadius: 2,
+          '& .MuiOutlinedInput-root': {
+            color: '#00aaff',
+            '& fieldset': {
+              borderColor: 'rgba(255, 255, 255, 0.3)', // Color del borde
+            },
+            '&:hover fieldset': {
+              borderColor: '#dcdcdc', // Color del borde al pasar el mouse
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#dcdcdc', // Color del borde al enfocarse
+            },
+          },
+          '& .MuiInputLabel-root': {
+            color: '#00aaff',
+          },
+          '& .MuiInputLabel-root.Mui-focused': {
+            color: '#dcdcdc',
+          },
+        }}
+      />
+    </Grid>
+  ))}
+</Grid>
 
-      <Container maxWidth="xl" sx={{ my: 5 }}>
+
+        {/* Productos */}
         <Grid container justifyContent="center" spacing={4}>
           {filteredData.map((product) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
@@ -96,14 +151,14 @@ const MainComponent2 = ({ data,handleViewMore }) => {
                   image={`http://localhost:8000/storage/${product.url_imagen}`}
                   alt={product.nombre}
                   sx={{
-                    width: '100%',
-                    aspectRatio: '1 / 1',
+                    width: '95%',
+                    aspectRatio: '',
                     objectFit: 'cover',
-                    borderRadius: 4,
+                    borderRadius: 2,
                     marginBottom: '8px',
                   }}
                 />
-                <CardContent sx={{ textAlign: 'center', padding: '8px' }}>
+                <CardContent sx={{ textAlign: 'left', padding: '8px' }}>
                   <Typography variant="h6" sx={{ color: '#f0f0f0', fontSize: '1rem' }}>
                     {product.nombre}
                   </Typography>
