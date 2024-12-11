@@ -1,15 +1,10 @@
 import React from "react";
-import { FormHelperText, TextField } from "@mui/material";
-import Button from "@mui/material/Button";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import AirplanemodeInactiveIcon from '@mui/icons-material/AirplanemodeInactive';
-import FormControl from '@mui/material/FormControl';
-import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Box } from '@mui/material';
-
+import {FormHelperText,TextField,Button,Card,CardContent,FormControl,AppBar,Toolbar,Typography,Box,
+} from "@mui/material";
+import AirplanemodeInactiveIcon from "@mui/icons-material/AirplanemodeInactive";
+import { Link } from "react-router-dom";
+import logo from '../img/logo.png';
+import logo2 from '../img/logo2.png';
 
 const LoginComponent = ({
   handleEmailChange,
@@ -27,74 +22,183 @@ const LoginComponent = ({
   };
 
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: "#0a0a0a",
+        minHeight: "100vh",
+        width: "100%",
+        color: "#f0f0f0",
+      }}
+    >
       {/* Navbar */}
-      <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', width: '100%', color: '#f0f0f0' }}>
-    
       <AppBar
         position="sticky"
         sx={{
-          backgroundColor: 'transparent',
-          boxShadow: 'none',
+          backgroundColor: "transparent",
+          boxShadow: "none",
+          mb: 4,
         }}
       >
         <Toolbar>
+        <Box
+            component="img"
+            src={logo}
+            alt="Logo"
+            sx={{
+              height: 70,
+              width: 'auto',
+              marginRight: -6,
+            }}
+          />
           <Box
             sx={{
               flexGrow: 1,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: 2, // Espaciado entre botones
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 3,
             }}
           >
-            <Button component={Link} to="/inicio" sx={{ color: '#00aaff' }}>
-              Inicio
-            </Button>
-            <Button component={Link} to="/home2" sx={{ color: '#00aaff' }}>
-              Ver Autos
-            </Button>
-            <Button component={Link} to="/home" sx={{ color: '#00aaff' }}>
-              Vender mi Auto
-            </Button>
-            <Button component={Link} to="/nosotros" sx={{ color: '#00aaff' }}>
-              Nosotros
-            </Button>
-            <Button component={Link} to="/contacto" sx={{ color: '#00aaff' }}>
-              Contacto
-            </Button>
+            {[
+              { label: "Inicio", to: "/inicio" },
+              { label: "Ver Autos", to: "/home2" },
+              { label: "Vender mi Auto", to: "/home" },
+              { label: "Nosotros", to: "/nosotros" },
+              { label: "Contacto", to: "/contacto" },
+            ].map((item) => (
+              <Button
+                key={item.label}
+                component={Link}
+                to={item.to}
+                sx={{
+                  color: "#00aaff",
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    color: "#ffaa00",
+                  },
+                }}
+              >
+                {item.label}
+              </Button>
+            ))}
           </Box>
         </Toolbar>
       </AppBar>
 
       {/* Login Form */}
-      <div className="card-container" style={{ marginTop: '80px' }}>
-        <Card>
+      <Box
+            component="img"
+            src={logo2}
+            alt="Logo2"
+            sx={{
+              height: 450,
+              width: 'auto',
+              marginRight: -6,
+              position:'absolute',
+              left: "50px",
+              top: "120px",
+            }}
+          />
+      <div
+        style={{
+          display: "flex",
+          position: "relative",
+          justifyContent: "right",
+          alignItems: "right",
+          marginTop: "80px",
+          left: "-250px",
+        }}
+      >
+        <Card
+          sx={{
+            maxWidth: 400,
+            width: "100%",
+            p: 3,
+            borderRadius: 2,
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+            textAlign: "center",
+            backgroundColor: "#1a1a1a",
+            color: "#f0f0f0",
+            
+          }}
+        >
           <CardContent>
-            <h1>Login</h1>
+            <Typography
+              variant="h5"
+              component="h1"
+              gutterBottom
+              sx={{ fontWeight: "bold", mb: 3 }}
+            >
+              Iniciar Sesión
+            </Typography>
             <form>
-              <FormControl className="login-form-control">
+              <FormControl fullWidth sx={{ gap: 2, mb: 2 }}>
                 <TextField
-                  className="login-input"
-                  id="outlined-basic"
-                  label="Email"
+                  id="outlined-basic-email"
+                  label="Correo Electrónico"
                   variant="outlined"
-                  placeholder="Introduzca su Email"
+                  placeholder="Introduzca su correo"
                   error={emailErrorState}
                   onChange={handleEmailChange}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "#2a2a2a",
+                      borderRadius: 2,
+                      color: "#f0f0f0",
+                    },
+                    "& .MuiInputLabel-root": { color: "#aaaaaa" },
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#555555",
+                    },
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#00aaff",
+                    },
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#ffaa00",
+                    },
+                  }}
                 />
                 {errorEmail()}
                 <TextField
-                  className="login-input"
+                  id="outlined-basic-password"
+                  label="Contraseña"
                   type="password"
-                  id="outlined-basic"
-                  label="Password"
                   variant="outlined"
-                  placeholder="Introduzca su Contraseña"
-                  error={false}
+                  placeholder="Introduzca su contraseña"
                   onChange={handlePasswordChange}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "#2a2a2a",
+                      borderRadius: 2,
+                      color: "#f0f0f0",
+                    },
+                    "& .MuiInputLabel-root": { color: "#aaaaaa" },
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#555555",
+                    },
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#00aaff",
+                    },
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#ffaa00",
+                    },
+                  }}
                 />
-                <Button onClick={authenticate} variant="outlined" startIcon={<AirplanemodeInactiveIcon />}>
+                <Button
+                  onClick={authenticate}
+                  variant="contained"
+                  sx={{
+                    mt: 2,
+                    backgroundColor: "#00aff",
+                    color: "#ffffff",
+                    fontWeight: "bold",
+                    "&:hover": {
+                      backgroundColor: "#ffaa00",
+                    },
+                  }}
+                  
+                >
                   Ingresar
                 </Button>
               </FormControl>
@@ -102,10 +206,8 @@ const LoginComponent = ({
           </CardContent>
         </Card>
       </div>
-      </div>
-    </>
-    
+    </div>
   );
 };
 
-export default LoginComponent;  
+export default LoginComponent;

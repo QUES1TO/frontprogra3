@@ -8,7 +8,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { IconButton, Box, Avatar, Typography } from "@mui/material";
+import { IconButton, Box, Avatar, Typography,AppBar,Toolbar, Button } from "@mui/material";
+import { Link } from 'react-router-dom';
+import logo from '../img/logo.png';
+
 import CardMedia from '@mui/material/CardMedia';
 
 const MainComponent = ({ data, handleEdit, userData }) => {
@@ -17,6 +20,62 @@ const MainComponent = ({ data, handleEdit, userData }) => {
 
     return (
         <>
+        <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', width: '100%', color: '#f0f0f0' }}>
+                  
+        <AppBar
+        position="sticky"
+        sx={{
+          backgroundColor: "transparent",
+          boxShadow: "none",
+          mb: 4,
+        }}
+      >
+        <Toolbar>
+        <Box
+            component="img"
+            src={logo}
+            alt="Logo"
+            sx={{
+              height: 70,
+              width: 'auto',
+              marginRight: -6,
+            }}
+          />
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 3,
+            }}
+          >
+            {[
+              { label: "Inicio", to: "/inicio" },
+              { label: "Ver Autos", to: "/home2" },
+              { label: "Vender mi Auto", to: "/home" },
+              { label: "Nosotros", to: "/nosotros" },
+              { label: "Contacto", to: "/contacto" },
+            ].map((item) => (
+              <Button
+                key={item.label}
+                component={Link}
+                to={item.to}
+                sx={{
+                  color: "#00aaff",
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    color: "#ffaa00",
+                  },
+                }}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </AppBar>
             
             <Box sx={{
                 position: 'absolute',
@@ -40,13 +99,17 @@ const MainComponent = ({ data, handleEdit, userData }) => {
                 </Box>
             </Box>
 
-           
             <div className="main-body">
+            
                 <TableContainer component={Paper} sx={{
-                    maxHeight: '70vh', // Ajuste para que la tabla no sobrepase la pantalla
-                    overflowY: 'auto',  // Agrega scroll si la tabla es más alta que el contenedor
-                    boxShadow: 3,
-                    borderRadius: '8px',
+                    position: 'absolute',
+                    top: 60,
+                    right: 0,
+                    p: 2,
+                    backgroundColor: '#333',  
+                    color: 'white',
+                    mt: 2, display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: 6 
+                   
                 }}>
                     <Table sx={{ minWidth: 850 }} aria-label="Product List">
                         <TableHead sx={{ backgroundColor: '#1E2A47', color: 'white' }}>
@@ -104,6 +167,8 @@ const MainComponent = ({ data, handleEdit, userData }) => {
                         </TableBody>
                     </Table>
                 </TableContainer>
+                
+            </div>
             </div>
         </>
     );

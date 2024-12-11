@@ -10,16 +10,17 @@ const InicioComponent = () => {
   return (
     <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', width: '100%', color: '#f0f0f0' }}>
       {/* Navbar */}
+
       <AppBar
         position="sticky"
         sx={{
-          backgroundColor: '#0a0a0a',
-          boxShadow: 'none',
+          backgroundColor: "transparent",
+          boxShadow: "none",
+          mb: 4,
         }}
       >
         <Toolbar>
-          {/* Logo en la esquina izquierda */}
-          <Box
+        <Box
             component="img"
             src={logo}
             alt="Logo"
@@ -29,35 +30,42 @@ const InicioComponent = () => {
               marginRight: -6,
             }}
           />
-
-          {/* Menú de navegación */}
           <Box
             sx={{
               flexGrow: 1,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: 2, // Espaciado entre botones
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 3,
             }}
           >
-            <Button component={Link} to="/inicio" sx={{ color: '#00aaff' }}>
-              Inicio
-            </Button>
-            <Button component={Link} to="/home2" sx={{ color: '#00aaff' }}>
-              Ver Autos
-            </Button>
-            <Button component={Link} to="/home" sx={{ color: '#00aaff' }}>
-              Vender mi Auto
-            </Button>
-            <Button component={Link} to="/nosotros" sx={{ color: '#00aaff' }}>
-              Nosotros
-            </Button>
-            <Button component={Link} to="/contacto" sx={{ color: '#00aaff' }}>
-              Contacto
-            </Button>
+            {[
+              { label: "Inicio", to: "/inicio" },
+              { label: "Ver Autos", to: "/home2" },
+              { label: "Vender mi Auto", to: "/home" },
+              { label: "Nosotros", to: "/nosotros" },
+              { label: "Contacto", to: "/contacto" },
+            ].map((item) => (
+              <Button
+                key={item.label}
+                component={Link}
+                to={item.to}
+                sx={{
+                  color: "#00aaff",
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    color: "#ffaa00",
+                  },
+                }}
+              >
+                {item.label}
+              </Button>
+            ))}
           </Box>
         </Toolbar>
       </AppBar>
+      
 
       {/* Título principal */}
       <Container maxWidth="lg"
