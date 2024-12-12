@@ -25,6 +25,7 @@ const GuardarProductoComponentController = ({setAuthenticated}) => {
 
     const [CategoriaList,setCategoriaList] = useState([]);
     const [categoriaId, setCategoriaId] = useState();
+    const [userId, setUserId] = useState();
 
     console.log(row);
     
@@ -77,6 +78,10 @@ const GuardarProductoComponentController = ({setAuthenticated}) => {
     const handleChangeCategoria = (e) => {
         setCategoriaId(e.target.value);
       };
+       
+    const handleChangeUser = (e) => {
+        setUserId(e.target.value);
+      };
       
 
       const handleUrlImagenChange = (newValue) => {        
@@ -99,6 +104,7 @@ const GuardarProductoComponentController = ({setAuthenticated}) => {
         formData.append('puertas', puertasValue);
         formData.append('precio', precioValue);
         formData.append('categoria_id', categoriaId);
+        formData.append('user_id', userId);
         // formData.append('_method', 'post');
         api.guardarproducto(formData)
             .then(response=>{
@@ -107,7 +113,7 @@ const GuardarProductoComponentController = ({setAuthenticated}) => {
             .then(json=>{
                 if(json.code=200)
                 {
-                    navigate("/home3");
+                    navigate("/home");
                 }
             })
             .catch(response=>{
@@ -124,9 +130,11 @@ const GuardarProductoComponentController = ({setAuthenticated}) => {
                     row.push(element);
                 });
                 setCategoriaId(row);
+                setUserId(row);
             }).catch(response=>{
                 console.log(response);
             });
+            
       },[]); 
 
     return (
@@ -144,6 +152,7 @@ const GuardarProductoComponentController = ({setAuthenticated}) => {
         previewImagenValue={previewImagenValue}
         handleUrlImagenChange={handleUrlImagenChange}
         handleChangeCategoria={handleChangeCategoria}
+        handleChangeUser={handleChangeUser}
         handleSaveData={handleSaveData}
         />
     );

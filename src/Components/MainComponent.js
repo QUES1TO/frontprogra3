@@ -72,10 +72,10 @@ const MainComponent = ({ data, handleEdit, userData }) => {
         {/* Contenedor principal */}
         <Box
           sx={{
-            px: 12, // Padding horizontal
+            px: 15, 
           }}
         >
-          {/* Información del usuario */}
+          
           <Box sx={{
                 position: 'absolute',
                 top: 7,
@@ -177,7 +177,6 @@ const MainComponent = ({ data, handleEdit, userData }) => {
                       <CardMedia
                         className="prp"
                         component="img"
-                        height="100"
                         image={`http://localhost:8000/storage/${row.url_imagen}`}
                       />
                     </TableCell>

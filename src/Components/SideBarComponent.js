@@ -43,8 +43,8 @@ const SideBarComponent = ({ changeCollapse, collapsed, authenticated, handleLogO
                                     <MenuItem icon={<HomeIcon />} onClick={() => navigate("/perfil")} className="sidebar-menu-item">
                                         Información
                                     </MenuItem>
-                                    <MenuItem icon={<AccountCircleIcon />} onClick={() => navigate("/home")} className="sidebar-menu-item">
-                                        Usuarios
+                                    <MenuItem icon={<AccountCircleIcon />} onClick={() => navigate("/guardar")} className="sidebar-menu-item">
+                                        vender
                                     </MenuItem>
                                     <MenuItem icon={<StoreIcon />} onClick={() => navigate("/home")} className="sidebar-menu-item">
                                         Productos
