@@ -1,20 +1,5 @@
 import React from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  IconButton,
-  Box,
-  Avatar,
-  Typography,
-  AppBar,
-  Toolbar,
-  Button,
-  CardMedia,
+import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,IconButton,Box,Avatar,Typography,AppBar,Toolbar,Button,CardMedia,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";

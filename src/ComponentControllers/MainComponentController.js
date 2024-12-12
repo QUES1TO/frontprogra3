@@ -49,7 +49,7 @@ const MainComponentController = () => {
             {userData && data.length > 0 ? (
                 <MainComponent data={data} handleEdit={handleEdit} userData={userData} />
             ) : (
-                <div>Cargando...</div> // Muestra un mensaje de carga mientras se obtienen los datos
+                <div></div> // Muestra un mensaje de carga mientras se obtienen los datos
             )}
         </>
     );

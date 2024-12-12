@@ -1,8 +1,7 @@
 import React from "react";
-import {FormHelperText,TextField,Button,Card,CardContent,FormControl,AppBar,Toolbar,Typography,Box,
-} from "@mui/material";
+import { FormHelperText, TextField, Button, Card, CardContent, FormControl, AppBar, Toolbar, Typography, Box } from "@mui/material";
 import AirplanemodeInactiveIcon from "@mui/icons-material/AirplanemodeInactive";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from '../img/logo.png';
 import logo2 from '../img/logo2.png';
 
@@ -13,12 +12,25 @@ const LoginComponent = ({
   emailErrorState,
   emailErrorMessage,
 }) => {
+  const navigate = useNavigate();
+
   const errorEmail = () => {
     return (
       emailErrorState && (
         <FormHelperText error>{emailErrorMessage}</FormHelperText>
       )
     );
+  };
+
+  const handleLogin = () => {
+    // Llamar a la función de autenticación
+    authenticate();
+    
+    // Suponiendo que la autenticación es exitosa, guarda el estado de 'authenticated' en localStorage
+    localStorage.setItem("authenticated", "true");
+    
+    // Redirige al usuario a la página principal o la página a la que quieras redirigir
+    navigate("/home"); 
   };
 
   return (
@@ -40,7 +52,7 @@ const LoginComponent = ({
         }}
       >
         <Toolbar>
-        <Box
+          <Box
             component="img"
             src={logo}
             alt="Logo"
@@ -88,18 +100,18 @@ const LoginComponent = ({
 
       {/* Login Form */}
       <Box
-            component="img"
-            src={logo2}
-            alt="Logo2"
-            sx={{
-              height: 450,
-              width: 'auto',
-              marginRight: -6,
-              position:'absolute',
-              left: "50px",
-              top: "120px",
-            }}
-          />
+        component="img"
+        src={logo2}
+        alt="Logo2"
+        sx={{
+          height: 450,
+          width: 'auto',
+          marginRight: -6,
+          position:'absolute',
+          left: "50px",
+          top: "120px",
+        }}
+      />
       <div
         style={{
           display: "flex",
@@ -120,7 +132,6 @@ const LoginComponent = ({
             textAlign: "center",
             backgroundColor: "#1a1a1a",
             color: "#f0f0f0",
-            
           }}
         >
           <CardContent>
@@ -141,6 +152,7 @@ const LoginComponent = ({
                   placeholder="Introduzca su correo"
                   error={emailErrorState}
                   onChange={handleEmailChange}
+                  autoComplete="off"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       backgroundColor: "#2a2a2a",
@@ -167,6 +179,7 @@ const LoginComponent = ({
                   variant="outlined"
                   placeholder="Introduzca su contraseña"
                   onChange={handlePasswordChange}
+                  autoComplete="new-password"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       backgroundColor: "#2a2a2a",
@@ -186,7 +199,7 @@ const LoginComponent = ({
                   }}
                 />
                 <Button
-                  onClick={authenticate}
+                  onClick={handleLogin} // Cambié la función aquí para llamar a la nueva función
                   variant="contained"
                   sx={{
                     mt: 2,
@@ -197,7 +210,6 @@ const LoginComponent = ({
                       backgroundColor: "#ffaa00",
                     },
                   }}
-                  
                 >
                   Ingresar
                 </Button>
