@@ -14,12 +14,12 @@ const SideBarComponent = ({ changeCollapse, collapsed, authenticated }) => {
     return (
         <>
             {authenticated && (
-                <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', width: '100%', color: '#f0f0f0' }}>
+                <div>
                   
 
                     {/* Sidebar */}
-                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%' }}>
-                        <div style={{ width: collapsed ? '80px' : '250px', backgroundColor: '#0a0a0a' }}>
+                    <div style={{ position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
+                        <div style={{ width: collapsed ? '80px' : '250px', backgroundColor: '',color: '#01aaff'  }}>
                             <Sidebar
                                 collapsed={collapsed}
                                 rootStyles={{
@@ -38,7 +38,7 @@ const SideBarComponent = ({ changeCollapse, collapsed, authenticated }) => {
                                     <MenuItem icon={<AccountCircleIcon />} onClick={() => navigate("/home")} className="sidebar-menu-item">
                                         Usuarios
                                     </MenuItem>
-                                    <MenuItem icon={<StoreIcon />} onClick={() => navigate("/produco")} className="sidebar-menu-item">
+                                    <MenuItem icon={<StoreIcon />} onClick={() => navigate("/home")} className="sidebar-menu-item">
                                         Productos
                                     </MenuItem>
                                 </Menu>

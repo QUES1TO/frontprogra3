@@ -66,7 +66,6 @@ const InicioComponent = () => {
         </Toolbar>
       </AppBar>
       
-
       {/* Título principal */}
       <Container maxWidth="lg"
         sx={{
@@ -105,6 +104,8 @@ const InicioComponent = () => {
           src={fondo}
           alt="Fondo"
           sx={{
+            position:'relative',
+            left:'90px',
             width: '90%',
             borderRadius: '50%',
             boxShadow: '0 4px 10px rgba(0, 0, 0, 0.5)',
@@ -201,3 +202,14 @@ const InicioComponent = () => {
 };
 
 export default InicioComponent;
+
+
+
+
+
+
+
+
+
+
+

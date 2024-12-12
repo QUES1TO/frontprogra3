@@ -100,10 +100,8 @@ const ViewProductComponent = ({ data }) => {
                   image={`http://localhost:8000/storage/${product.url_imagen}`}
                   alt={product.nombre}
                   sx={{
-                    width: '300px',
-                    height: 'auto',
-                    objectFit: 'cover',
-                    borderRadius: 4,
+                    width: '90%',
+                  
                   }}
                 />
               </Card>
