@@ -30,60 +30,89 @@ const MainComponent2 = ({ data, handleViewMore }) => {
   return (
     <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', width: '100%', color: '#f0f0f0' }}>
       {/* Navbar */}
-      <AppBar
-        position="sticky"
-        sx={{
-          backgroundColor: "transparent",
-          boxShadow: "none",
-          mb: 4,
-        }}
-      >
-        <Toolbar>
-        <Box
-            component="img"
-            src={logo}
-            alt="Logo"
-            sx={{
-              height: 70,
-              width: 'auto',
-              marginRight: -6,
-            }}
-          />
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 3,
-            }}
-          >
-            {[
-              { label: "Inicio", to: "/inicio" },
-              { label: "Ver Autos", to: "/home2" },
-              { label: "Vender mi Auto", to: "/home" },
-              { label: "Nosotros", to: "/nosotros" },
-              { label: "Contacto", to: "/contacto" },
-            ].map((item) => (
-              <Button
-                key={item.label}
-                component={Link}
-                to={item.to}
-                sx={{
-                  color: "#00aaff",
-                  textTransform: "none",
-                  fontWeight: "bold",
-                  "&:hover": {
-                    color: "#ffaa00",
-                  },
-                }}
-              >
-                {item.label}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
+
+          {/* Navbar */}
+          <AppBar
+  position="sticky"
+  sx={{
+    backgroundColor: "rgba(0, 0, 0, 0.85)", // Fondo semitransparente
+    boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.3)",
+    mb: 4,
+    backdropFilter: "blur(10px)", // Efecto de desenfoque para elegancia
+    borderBottom: "1px solid #c0c0c0", // Borde plateado más delgado
+  }}
+>
+  <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+    {/* Logo */}
+    
+    <Box
+      component="img"
+      src={logo}
+      alt="Logo"
+      
+      sx={{
+        height: 80, // Tamaño del logo aumentado
+        width: "auto",
+        marginLeft: 2,
+        transition: "transform 0.3s ease",
+        "&:hover": {
+          transform: "scale(1.1)", // Zoom al pasar el mouse
+        },
+      }}
+    />
+
+    {/* Menú */}
+    <Box
+      sx={{
+        flexGrow: 1,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 4,
+      }}
+    >
+      {[
+        { label: "Inicio", to: "/inicio" },
+        { label: "Ver Autos", to: "/home2" },
+        { label: "Vender mi Auto", to: "/home" },
+        { label: "Nosotros", to: "/nosotros" },
+        { label: "Contacto", to: "/contacto" },
+      ].map((item) => (
+        <Button
+          key={item.label}
+          component={Link}
+          to={item.to}
+          sx={{
+            color: "#ffffff",
+            fontSize: "1rem",
+            fontWeight: "bold",
+            textTransform: "none",
+            position: "relative",
+            transition: "color 0.3s ease",
+            "&:after": {
+              content: '""',
+              position: "absolute",
+              width: "0%",
+              height: "2px",
+              bottom: 0,
+              left: 0,
+              backgroundColor: "#ffaa00",
+              transition: "width 0.3s ease",
+            },
+            "&:hover": {
+              color: "#ffaa00",
+              "&:after": {
+                width: "100%", // Línea animada al pasar el mouse
+              },
+            },
+          }}
+        >
+          {item.label}
+        </Button>
+      ))}
+    </Box>
+  </Toolbar>
+</AppBar>
 
       {/* Contenedor general */}
       <Container
