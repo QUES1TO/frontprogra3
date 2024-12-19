@@ -17,6 +17,9 @@ const GuardarProductComponent = ({
   handlePrecioChange,
   previewImagenValue,
   handleUrlImagenChange,
+  handleUrlImagen2Change,
+  handleUrlImagen3Change,
+  handleUrlImagen4Change,
   handleChangeCategoria,
   handleChangeUser,
   handleSaveData
@@ -353,33 +356,7 @@ const GuardarProductComponent = ({
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                     type="file"
-                     fullWidth
-                     onChange={handleUrlImagenChange}
-                     inputProps={{
-                       accept: '.jpg, .png' // Restringe a imágenes JPG y PNG
-                     }}
-                     sx={{
-                          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                          color: '#00aaff',
-                         '& .MuiOutlinedInput-root': {
-                         '& fieldset': {
-                         borderColor: '#00aaff',
-                        },
-                        '&:hover fieldset': {
-                         borderColor: '#ffaa00',
-                         },
-                         
-                         },
-                        '& .MuiInputLabel-root': {
-                         color: '#00aaff',
-                        }
-                        }}
-                       />
-                   </Grid>
-
+                  
                   <Grid item xs={12} sm={6}>
                     <TextField
                       label="Categoría"
@@ -435,6 +412,111 @@ const GuardarProductComponent = ({
                     />
                   </Grid>
                 </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                     type="file"
+                     fullWidth
+                     onChange={handleUrlImagen2Change}
+                     inputProps={{
+                       accept: '.jpg, .png' // Restringe a imágenes JPG y PNG
+                     }}
+                     sx={{
+                          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                          color: '#00aaff',
+                         '& .MuiOutlinedInput-root': {
+                         '& fieldset': {
+                         borderColor: '#00aaff',
+                        },
+                        '&:hover fieldset': {
+                         borderColor: '#ffaa00',
+                         },
+                         
+                         },
+                        '& .MuiInputLabel-root': {
+                         color: '#00aaff',
+                        }
+                        }}
+                       />
+                   </Grid>
+                   <Grid item xs={12} sm={6}>
+                    <TextField
+                     type="file"
+                     fullWidth
+                     onChange={handleUrlImagen3Change}
+                     inputProps={{
+                       accept: '.jpg, .png' // Restringe a imágenes JPG y PNG
+                     }}
+                     sx={{
+                          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                          color: '#00aaff',
+                         '& .MuiOutlinedInput-root': {
+                         '& fieldset': {
+                         borderColor: '#00aaff',
+                        },
+                        '&:hover fieldset': {
+                         borderColor: '#ffaa00',
+                         },
+                         
+                         },
+                        '& .MuiInputLabel-root': {
+                         color: '#00aaff',
+                        }
+                        }}
+                       />
+                   </Grid>
+                   <Grid item xs={12} sm={6}>
+                    <TextField
+                     type="file"
+                     fullWidth
+                     onChange={handleUrlImagenChange}
+                     inputProps={{
+                       accept: '.jpg, .png' // Restringe a imágenes JPG y PNG
+                     }}
+                     sx={{
+                          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                          color: '#00aaff',
+                         '& .MuiOutlinedInput-root': {
+                         '& fieldset': {
+                         borderColor: '#00aaff',
+                        },
+                        '&:hover fieldset': {
+                         borderColor: '#ffaa00',
+                         },
+                         
+                         },
+                        '& .MuiInputLabel-root': {
+                         color: '#00aaff',
+                        }
+                        }}
+                       />
+                   </Grid>
+                   <Grid item xs={12} sm={6}>
+                    <TextField
+                     type="file"
+                     fullWidth
+                     onChange={handleUrlImagenChange}
+                     inputProps={{
+                       accept: '.jpg, .png' // Restringe a imágenes JPG y PNG
+                     }}
+                     sx={{
+                          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                          color: '#00aaff',
+                         '& .MuiOutlinedInput-root': {
+                         '& fieldset': {
+                         borderColor: '#00aaff',
+                        },
+                        '&:hover fieldset': {
+                         borderColor: '#ffaa00',
+                         },
+                         
+                         },
+                        '& .MuiInputLabel-root': {
+                         color: '#00aaff',
+                        }
+                        }}
+                       />
+                   </Grid>
+
                 <Button
                   variant="contained"
                   color="primary"

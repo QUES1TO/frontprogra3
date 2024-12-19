@@ -49,10 +49,28 @@ const MainComponentController = () => {
             {userData && data.length > 0 ? (
                 <MainComponent data={data} handleEdit={handleEdit} userData={userData} />
             ) : (
-                <div> cargando espere porfavor...</div> // Muestra un mensaje de carga mientras se obtienen los datos
+                <div
+                    style={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(24, 21, 21, 0.91)', // Fondo oscuro
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        zIndex: 9999,
+                    }}
+                >
+                    <div className="loading-circle" style={{ color: '#f0f0f0' }}>
+                        {/* Este es el círculo de carga */}
+                        <div className="circle"></div>
+                    </div>
+                </div>
             )}
         </>
     );
 };
 
-export default MainComponentController; 
+export default MainComponentController;
