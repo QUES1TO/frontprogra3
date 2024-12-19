@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Typography, Button, Container, Grid, Card, CardMedia, Box, TextField, Divider, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import logo from '../img/logo.png';
-const ViewProductComponent = ({ data }) => {
+
+const ViewProductComponent = ({ data, userData }) => {
   const [comment, setComment] = useState('');
-  const [comments, setComments] = useState([]);
   const [mainImage, setMainImage] = useState('');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [hovered, setHovered] = useState(false); // Estado para controlar si el mouse está sobre la imagen
+
+  // Usamos userData para los comentarios (viene de la API)
+  const comments = userData || [];
 
   const handleImageClick = (imageUrl) => {
     setMainImage(imageUrl);
@@ -22,7 +25,8 @@ const ViewProductComponent = ({ data }) => {
 
   const handleAddComment = () => {
     if (comment.trim()) {
-      setComments([...comments, comment]);
+      // Aquí podrías agregar un nuevo comentario a la API si es necesario
+      // setComments([...comments, comment]);
       setComment('');
     }
   };
@@ -44,89 +48,78 @@ const ViewProductComponent = ({ data }) => {
   return (
     <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', width: '100%', color: '#f0f0f0' }}>
       {/* Navbar */}
-
-          {/* Navbar */}
-          <AppBar
-  position="sticky"
-  sx={{
-    backgroundColor: "rgba(0, 0, 0, 0.85)", // Fondo semitransparente
-    boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.3)",
-    mb: 4,
-    backdropFilter: "blur(10px)", // Efecto de desenfoque para elegancia
-    borderBottom: "1px solid #c0c0c0", // Borde plateado más delgado
-  }}
->
-  <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-    {/* Logo */}
-    
-    <Box
-      component="img"
-      src={logo}
-      alt="Logo"
-      
-      sx={{
-        height: 80, // Tamaño del logo aumentado
-        width: "auto",
-        marginLeft: 2,
-        transition: "transform 0.3s ease",
-        "&:hover": {
-          transform: "scale(1.1)", // Zoom al pasar el mouse
-        },
-      }}
-    />
-
-    {/* Menú */}
-    <Box
-      sx={{
-        flexGrow: 1,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 4,
-      }}
-    >
-      {[
-        { label: "Inicio", to: "/inicio" },
-        { label: "Ver Autos", to: "/home2" },
-        { label: "Vender mi Auto", to: "/home" },
-        { label: "Nosotros", to: "/nosotros" },
-        { label: "Contacto", to: "/contacto" },
-      ].map((item) => (
-        <Button
-          key={item.label}
-          component={Link}
-          to={item.to}
-          sx={{
-            color: "#ffffff",
-            fontSize: "1rem",
-            fontWeight: "bold",
-            textTransform: "none",
-            position: "relative",
-            transition: "color 0.3s ease",
-            "&:after": {
-              content: '""',
-              position: "absolute",
-              width: "0%",
-              height: "2px",
-              bottom: 0,
-              left: 0,
-              backgroundColor: "#ffaa00",
-              transition: "width 0.3s ease",
-            },
-            "&:hover": {
-              color: "#ffaa00",
-              "&:after": {
-                width: "100%", // Línea animada al pasar el mouse
+      <AppBar
+        position="sticky"
+        sx={{
+          backgroundColor: "rgba(0, 0, 0, 0.85)",
+          boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.3)",
+          mb: 4,
+          backdropFilter: "blur(10px)",
+          borderBottom: "1px solid #c0c0c0",
+        }}
+      >
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          {/* Logo */}
+          <Box
+            component="img"
+            src={logo}
+            alt="Logo"
+            sx={{
+              height: 80,
+              width: "auto",
+              marginLeft: 2,
+              transition: "transform 0.3s ease",
+              "&:hover": {
+                transform: "scale(1.1)",
               },
-            },
-          }}
-        >
-          {item.label}
-        </Button>
-      ))}
-    </Box>
-  </Toolbar>
-</AppBar>
+            }}
+          />
+          {/* Menú */}
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 4,
+            }}
+          >
+            {[{ label: "Inicio", to: "/inicio" }, { label: "Ver Autos", to: "/home2" }, { label: "Vender mi Auto", to: "/home" }, { label: "Nosotros", to: "/nosotros" }, { label: "Contacto", to: "/contacto" }].map((item) => (
+              <Button
+                key={item.label}
+                component={Link}
+                to={item.to}
+                sx={{
+                  color: "#ffffff",
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                  textTransform: "none",
+                  position: "relative",
+                  transition: "color 0.3s ease",
+                  "&:after": {
+                    content: '""',
+                    position: "absolute",
+                    width: "0%",
+                    height: "2px",
+                    bottom: 0,
+                    left: 0,
+                    backgroundColor: "#ffaa00",
+                    transition: "width 0.3s ease",
+                  },
+                  "&:hover": {
+                    color: "#ffaa00",
+                    "&:after": {
+                      width: "100%",
+                    },
+                  },
+                }}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </AppBar>
 
       {/* Contenedor de producto */}
       <Container maxWidth="xl" sx={{ my: 5 }}>
@@ -142,7 +135,7 @@ const ViewProductComponent = ({ data }) => {
                   cursor: 'default',
                 }}
               >
-                {/* Datos del producto a la izquierda */}
+                {/* Datos del producto */}
                 <Box sx={{ padding: 2, flex: 1, marginRight: '32px' }}>
                   <Typography variant="h5" sx={{ color: 'red', marginBottom: '8px' }}>
                     {product.nombre}
@@ -174,40 +167,15 @@ const ViewProductComponent = ({ data }) => {
                 </Box>
 
                 {/* Imagen principal */}
-                <Box
-                  sx={{
-                    flex: 1,
-                    marginLeft: '32px',
-                    position: 'relative', // Para posicionar las flechas dentro de la imagen
-                    '&:hover .arrows': { opacity: 1 }, // Muestra las flechas al pasar el mouse
-                    maxWidth: '100%', // Hace que la imagen ocupe el máximo espacio disponible
-                  }}
-                  onMouseEnter={() => setHovered(true)} // Activar cuando el mouse entra en la imagen
-                  onMouseLeave={() => setHovered(false)} // Desactivar cuando el mouse sale
-                >
+                <Box sx={{ flex: 1, marginLeft: '32px', position: 'relative' }} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
                   <CardMedia
                     component="img"
                     image={`http://localhost:8000/storage/${mainImage || product.url_imagen}`}
                     alt={product.nombre}
-                    sx={{
-                      width: '550px', // Asegura que la imagen ocupe el 100% del espacio disponible
-                   }}
+                    sx={{ width: '550px' }}
                   />
-                  {/* Flechas de navegación */}
                   {hovered && (
-                    <Box
-                      className="arrows"
-                      sx={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        width: '100%',
-                        opacity: 0.8,
-                      }}
-                    >
+                    <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', display: 'flex', justifyContent: 'space-between', width: '100%', opacity: 0.8 }}>
                       <IconButton onClick={() => handleImageChange(-1)} sx={{ color: '#ffaa00' }}>
                         <ArrowBackIosIcon />
                       </IconButton>
@@ -236,12 +204,7 @@ const ViewProductComponent = ({ data }) => {
           onChange={handleCommentChange}
           sx={{ backgroundColor: '#333', marginBottom: '16px' }}
         />
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ display: 'block', marginBottom: '32px' }}
-          onClick={handleAddComment}
-        >
+        <Button variant="contained" color="secondary" sx={{ display: 'block', marginBottom: '32px' }} onClick={handleAddComment}>
           Agregar Comentario
         </Button>
 
@@ -249,7 +212,7 @@ const ViewProductComponent = ({ data }) => {
         <List>
           {comments.map((comm, index) => (
             <ListItem key={index}>
-              <ListItemText primary={comm} sx={{ color: '#f0f0f0' }} />
+              <ListItemText primary={comm.comentario} sx={{ color: 'white' }} />
             </ListItem>
           ))}
         </List>

@@ -179,6 +179,14 @@ const deleteProductData = (id) => {
 const caritoData = () => {
     return httpGetRequest('/api/carito',{});
 }
+const guardarcomentario = (data) =>{
+
+    
+    return httpPostRequest('/api/comentario',data,false);
+}
+const comentario = () => {
+    return httpGetRequest('/api/comentario',{});
+}
 
 const api = {
     productoo:productoData,
@@ -201,5 +209,6 @@ const api = {
     deleteProductData:deleteProductData,
     selectData:selectData,
     caritoData:caritoData,
+    comentario:comentario,
 };
 export default api;

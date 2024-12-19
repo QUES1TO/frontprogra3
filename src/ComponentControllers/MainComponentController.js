@@ -42,12 +42,15 @@ const MainComponentController = () => {
         console.log("Estamos aquí");
         navigate("/edit/" + row.id, { state: row }); // Redirige a la página de edición
     };
+    const handleDelete = (row) => {
+        
+        navigate("/delete/"+row.id, { state: row});
+    }
 
     return (
         <>
-            {/* Solo renderiza MainComponent cuando los datos estén listos */}
             {userData && data.length > 0 ? (
-                <MainComponent data={data} handleEdit={handleEdit} userData={userData} />
+                <MainComponent  handleDelete={handleDelete} data={data} handleEdit={handleEdit} userData={userData} />
             ) : (
                 <div
                     style={{

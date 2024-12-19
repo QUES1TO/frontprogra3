@@ -66,7 +66,7 @@ const SideBarComponent = ({ changeCollapse, collapsed, authenticated, handleLogO
                     <div 
                         style={{
                             position: 'absolute',
-                            top: '70%',
+                            top: '520px',
                             left: collapsed ? '20px' : '20px', // Posiciona la flecha según el estado
                             transform: 'translateY(-50%)',
                             cursor: 'pointer',

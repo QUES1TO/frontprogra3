@@ -11,6 +11,7 @@ import InicioComponentController from "./ComponentControllers/InicioComponentCon
 import GuardarProductoComponentController from "./ComponentControllers/GuardarProductoComponentController";
 import ViewProductComponentController from "./ComponentControllers/ViewProductComponentController";
 
+import DeleteProductComponentController from "./ComponentControllers/DeleteProductComponentController";
 
 import auth from "./Auth/auth";
 const App = () => {
@@ -51,6 +52,8 @@ const App = () => {
         <Route path='/home2' Component={MainComponentController2}/>
         <Route path='/guardar' Component={GuardarProductoComponentController}/>
         <Route path='/producto/:id' Component={ViewProductComponentController}/>
+        <Route path='/delete/:id' Component={DeleteProductComponentController}/>
+      
           <Route path='/login' Component={loginTarget}/>   
           <Route element={<PrivateRoutes/>}>
             <Route path='/home' Component={MainComponentController}/>   

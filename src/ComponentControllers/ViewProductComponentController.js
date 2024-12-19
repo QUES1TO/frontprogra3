@@ -7,7 +7,7 @@ const ViewProductComponentController = () => {
     const { id } = useParams(); // Obtener el ID del producto desde la URL
     const navigate = useNavigate();
     const [data, setData] = useState([]);
-
+    const [userData,coData] = useState([]);
     useEffect(() => {
         api.productoData2()  // Traemos todos los productos
             .then(response => response.json())
@@ -24,10 +24,27 @@ const ViewProductComponentController = () => {
             .catch(error => {
                 console.log(error);
             });
-    }, [id]); // Dependencia para actualizar cuando cambie el ID
+    }, [id]); 
+    // Dependencia para actualizar cuando cambie el ID
+    useEffect( ()=>{
+        api.comentario()
+            .then(response =>{
+                return response.json()
+            }).then(json=>{
+                const row = [];
+                json.body.forEach(element => {
+                    row.push(element);
+                });
+                coData(row);
+            }).catch(response=>{
+                console.log(response);
+            });
+      },[]);    
 
     return (
-        <MainComponent2 data={data} />
+        <MainComponent2 data={data}
+        userData={userData}
+          />
     );
 };
 

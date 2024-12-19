@@ -6,7 +6,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import logo from "../img/logo.png";
 
-const MainComponent = ({ data, handleEdit, userData }) => {
+const MainComponent = ({ data, handleEdit, userData,handleDelete }) => {
   const filteredData = data.filter((row) => row.user_id === userData.id);
   console.log("userData", userData);
 
@@ -184,7 +184,7 @@ const MainComponent = ({ data, handleEdit, userData }) => {
                       <IconButton onClick={() => handleEdit(row)} sx={{ color: "white" }}>
                         <EditIcon />
                       </IconButton>
-                      <IconButton sx={{ color: "#f44336" }}>
+                      <IconButton onClick={() => handleDelete(row)} sx={{ color: "#f44336" }}>
                         <DeleteIcon />
                       </IconButton>
                     </TableCell>
